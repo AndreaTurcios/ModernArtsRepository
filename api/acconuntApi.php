@@ -70,6 +70,27 @@
                     }
                 }
                 break;
+                case 'changePassword':
+                    if ($dataUser->setId($_SESSION['idUser'])) {
+                        $_POST = $dataUser->validateForm($_POST);
+                        if ($_POST['clavempleado'] == $_POST['confclave']) {
+                            if ($dataUser->setPassword($_POST['clavempleado'])) {
+                                if ($dataUser->updateRowPassword()) {
+                                    $result['status'] = 1;
+                                    $result['message'] = 'Usuario modificado correctamente';
+                                } else {
+                                    $result['exception'] = Database::getException();
+                                }
+                            } else {
+                                $result['exception'] = $dataUser->getPasswordError();
+                            }
+                        } else {
+                            $result['exception'] = 'Claves diferentes';
+                        }
+                    } else {
+                        $result['exception'] = 'Claves diferentes';
+                    }
+                    break;
                 default:
                     $result['exception'] = 'Acción no disponible fuera de la sesión';
             }

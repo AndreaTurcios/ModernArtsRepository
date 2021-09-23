@@ -20,10 +20,10 @@
             <div class="section white">
                 <div class="row container">
                     <h2 class="header">ModernArts</h2>
-                    <p class="grey-text text-darken-3 lighten-3">Una tienda en linea de las mas completas que veras
+                    <p class="grey-text text-darken-3 lighten-3">Una tienda en línea de las más completas que veras
                         sobre
-                        artesanias, nos encantan las artesanias y nos
-                        esforsamos en dar los mejores productos, si tu tambien eres apacionad@ por el arte esta es tu
+                        artesanías, nos encantan las artesanías y nos
+                        esforzamos en brindar los mejores productos, si tu también eres apacionad@ por el arte esta es tu
                         tienda.
                     </p>
                 </div>

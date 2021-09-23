@@ -182,12 +182,30 @@
             
         }
 
+        //Este es el punto 2 de la rúbrica (cifrar contraseña), crea un nuevo hash de contraseña usando 
+        //un algoritmo de hash fuerte de único sentido, el tiempo empleado en codificar una contraseña 
+        //se denomina coste y se puede configurar mediante el tercer argumento opcional de la función 
+        //password_hash(). El coste por defecto es 10 (por eso el prefijo de las contraseñas anteriores es $2y$10$)
+
+        //PASSWORD_BCRYPT, a pesar de su nombre, codifica la contraseña utilizando el algoritmo CRYPT_BLOWFISH. 
+        //Al igual que en el caso anterior, la contraseña codificada ocupa 60 caracteres en total, siendo los primeros caracteres $2y$.
+
         public function create(){
             $hash = password_hash('Arts', PASSWORD_DEFAULT);
             $sql = 'INSERT INTO administradores(nombre_admin,apellido_admin,correo_admin,clave_admin)
             VALUES(?,?,?,?)';
             $params = array($this->name, $this->lastname,$this->email,$hash);
             return dataBase::executeRow($sql, $params);
+        }
+
+        public function updateRowPassword()
+        { 
+        $hash = password_hash($this->password, PASSWORD_DEFAULT);
+        $sql = 'UPDATE clientes 
+                SET clave=?
+                WHERE id_cliente = ?';
+        $params = array($hash, $_SESSION['idUser']);
+        return Database::executeRow($sql, $params);
         }
 
         public function update($idAD){

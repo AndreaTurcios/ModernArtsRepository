@@ -3,7 +3,7 @@
     //clase para imprimir metodos o recursos que se repiten en la App
     class page{
         //metodo imprime el header
-        public static function headerTemplate(){
+        public static function headerTemplate($title){
             session_start();
             if(isset($_SESSION['user'])){
                 header('Location: views/public/inicio.php');
@@ -13,7 +13,7 @@
                 <!DOCTYPE html>
                 <html lang="es">
                 <head>
-                    <title>modernarts</title>
+                    <title>ModernArts - '.$title.'</title>
                     <meta charset="utf-8">
                     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
                     <link type="text/css" rel="stylesheet" href="resources/css/materialize.min.css" media="screen,projection">

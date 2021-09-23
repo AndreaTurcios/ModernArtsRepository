@@ -1,7 +1,8 @@
 <?php
-    require_once('../../api/public/productos.php');
-    require_once('../../template/public/resourcesPage.php'); 
-    page::headerTemplate('carrito');
+//Se incluye la plantilla del encabezado para la página web
+require_once('../../api/public/productos.php');
+include('../../template/public/resourcesPage.php'); 
+page::headerTemplate('Carrito');
 ?>
 
     <div class="container-fluid">
@@ -13,7 +14,7 @@
             <div>
                 <div class="parallax-container">
                     <div class="imgbgjc">
-                        <h1 class="himgjc">LISTADO DE COMPRAS.</h1>
+                        <h1 class="himgjc">Listado de compras.</h1>
                     </div>
                 </div>
                 <div class="section white">
@@ -67,3 +68,7 @@
 </body>
 
 </html>
+
+<?php
+    page::scriptTemplate('pedido.js');
+?>
