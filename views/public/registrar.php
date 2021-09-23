@@ -14,12 +14,12 @@
                 <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response"/>
                 <!-- Punto 8 para desactivar la función de autocomplete, según el documento de OWASP podría considerarse
                 configuración de seguridad incorrecta y exposición de datos sensibles -->
-                <input type="text" name="name" placeholder="Nombre" autocomplete="off" required/>>
-                <input type="text" name="apellido" placeholder="Apellido" autocomplete="off" required/>>
-                <input type="text" name="usuario" placeholder="Usuario" autocomplete="off" required/>>
-                <input type="text" name="gmail" placeholder="Gmail" autocomplete="off" required/>>
-                <input type="password" name="clave"  placeholder="Contraseña" id="pass1" onchange="passwordE();" autocomplete="off" required/>>
-                <input type="password"  name="confclave" placeholder="Confirmar contraseña" id="pass2" onchange="passwordE();" autocomplete="off" required/>>
+                <input type="text" name="name" placeholder="Nombre" autocomplete="off" required/>
+                <input type="text" name="apellido" placeholder="Apellido" autocomplete="off" required/>
+                <input type="text" name="usuario" placeholder="Usuario" autocomplete="off" required/>
+                <input type="text" name="gmail" placeholder="Gmail" autocomplete="off" required/>
+                <input type="password" name="clave"  placeholder="Contraseña" id="pass1" onchange="passwordE();" autocomplete="off" required/>
+                <input type="password"  name="confclave" placeholder="Confirmar contraseña" id="pass2" onchange="passwordE();" autocomplete="off" required/>
                 <button id="regis">Registrarme</button>
                 <a href="../../?action=" class="boton">Ya tengo una cuenta</a>
             </form>
