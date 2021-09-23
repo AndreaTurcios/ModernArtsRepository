@@ -41,10 +41,20 @@ class validation
     *   
     *   Retorno: arreglo con los campos saneados del formulario.
     */
-    public function validateForm($fields)
+    /*public function validateForm($fields)
     {
         foreach ($fields as $index => $value) {
             $value = trim($value);
+            $fields[$index] = $value;
+        }
+        return $fields;
+    }*/
+
+    // Punto 11 strip_tags que valida todos los datos de entrada evitando que los usuarios ingresen cadenas de texto maliciosas
+    public function validateForm($fields)
+    {
+        foreach ($fields as $index => $value) {
+            $value = strip_tags(trim($value));
             $fields[$index] = $value;
         }
         return $fields;
