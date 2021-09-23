@@ -4,49 +4,54 @@
         //metodo imprime el header
         public static function headerTemplate($title){
             session_start();
-            print(' 
+            print('
                 <!DOCTYPE html>
-                <html lang="es">
-                <head>
-                    <title>ModernArts</title>
-                    <meta charset="utf-8">
-                    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-                    <link type="text/css" rel="stylesheet" href="../../resources/css/materialize.min.css" media="screen,projection">
-    
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                </head>
-                    <body class="blue-grey lighten-5">
-                ');
+                        <head>
+                            <title>ModernArts '.$title.'</title>
+                            <meta charset="utf-8">
+                            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+                            <link type="text/css" rel="stylesheet" href="../../resources/css/materialize.min.css" media="screen,projection" />
+                            <link type="text/css" rel="stylesheet" href="../../resources/css/public/'.$title.'.css" />
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                        </head>
+                        <body class="blue-grey lighten-5">
+            ');
         }
         //metodo para imprimir menu en las vistas, este metodo se ella por medio de un funcion estatica, no se solicita un valor para esta funcion
         public static function menuTemplate(){
+
+            if(isset($_SESSION['user'])){
+                $button = '<li><a onClick="logOut()" ">Cerrar Sesión</a></li>';
+            }
+            else{
+                $button = '<li><a href="../../?action=">Iniciar Sesión</a></li>';
+            }
+            if(isset($_SESSION['admin'])){
+                $app = '<li><a href="../private/inicio.php" ">App</a></li>';
+            }
+            else{
+                $app = '';
+            }
             print('
             <div class="nav-wrapper navbar-fixed">
-                <nav class="blue-grey darken-4">
-                    <a href="#" class="brand-logo">ModernArts</a>
-                    <a href="#" data-target="responsive-nav" class="sidenav-trigger">
-                        <i class="material-icons">menu</i>
-                    </a>
+            <nav class="blue-grey darken-4">
+                <a href="#" class="brand-logo">ModernArts</a>
+                <a href="#" data-target="responsive-nav" class="sidenav-trigger">
+                    <i class="material-icons">menu</i>
+                </a>
 
-                    <ul id="nav-mobile" class="right hide-on-med-and-down">
-                      
-                        <li><a href="inicio.php">Inicio</a></li>
-                        <li><a href="usuarios.php">Usuarios</a></li>
-                        <li><a href="bodega.php">bodega</a></li>
-                        <li><a href="pedidos.php">Pedidos</a></li>
-                        <li><a href="comentarios.php">Comentarios</a></li>
-                        <li><a onclick="logOut()" >cerrar session</a></li>
-                    </ul>
-                </nav>
-            </div>
-            <ul class="sidenav" id="responsive-nav">
-                <li><a href="inicio.php">Inicio</a></li>
-                <li><a href="usuarios.php">Usuarios</a></li>
-                <li><a href="bodega.php">bodega</a></li>
-                <li><a href="pedidos.php">Pedidos</a></li>
-                <li><a href="comentarios.php">Comentarios</a></li>
-                <li><a onclick="logOut()" >cerrar session</a></li>
-            </ul>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="inicio.php">Inicio</a></li>
+                    <li><a href="muestraProducto.php">Productos</a></li>
+                    '.$button.'
+                    '.$app.'
+                </ul>
+            </nav>
+        </div>
+        <ul class="sidenav" id="responsive-nav">
+            <li><a href="../html/index.html">Inicio</a></li>
+            <li><a href="muestraProducto.php">Productos</a></li>
+        </ul>
             ');
         }
 
@@ -86,13 +91,12 @@
         }
         //metodo para imprimir footer
         public static function scriptTemplate($controller){
-
             print('
-                    <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
-                    <script type="text/javascript" src="../../resources/js/materialize.min.js"></script>
-                    <script type="text/javascript" src="../../controllers/private/'.$controller.'.js"></script>
-                    <script type="text/javascript" src="../../controllers/private/app.js"></script>
-                    <script type="text/javascript" src="../../template/components.js"></script>
+                <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
+                <script type="text/javascript" src="../../resources/js/materialize.min.js"></script>
+                <script type="text/javascript" src="../../controllers/public/'.$controller.'.js"></script>
+                <script type="text/javascript" src="../../controllers/public/global.js"></script>
+                <script type="text/javascript" src="../../template/components.js"></script>
                 </body>
                 </html>
             ');

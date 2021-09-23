@@ -11,7 +11,7 @@
                             <meta charset="utf-8">
                             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
                             <link type="text/css" rel="stylesheet" href="../../resources/css/materialize.min.css" media="screen,projection" />
-                            <link type="text/css" rel="stylesheet" href="../../resources/css/public/'.$title.'.css" />
+                            
                             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                         </head>
                         <body class="blue-grey lighten-5">
@@ -108,6 +108,18 @@
                 <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
                 <script type="text/javascript" src="../../resources/js/materialize.min.js"></script>
                 <script type="text/javascript" src="../../controllers/public/'.$controller.'.js"></script>
+                <script type="text/javascript" src="../../controllers/public/global.js"></script>
+                <script type="text/javascript" src="../../template/components.js"></script>
+                </body>
+                </html>
+            ');
+        }
+
+        public static function scriptTemplatePrivate($controller){
+            print('
+                <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
+                <script type="text/javascript" src="../../resources/js/materialize.min.js"></script>
+                <script type="text/javascript" src="../../controllers/private/'.$controller.'.js"></script>
                 <script type="text/javascript" src="../../controllers/public/global.js"></script>
                 <script type="text/javascript" src="../../template/components.js"></script>
                 </body>

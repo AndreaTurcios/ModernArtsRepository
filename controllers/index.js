@@ -28,3 +28,36 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
         console.log(error);
     });
 });
+
+function changePassword(id) {
+    // Se restauran los elementos del formulario.
+    document.getElementById('change-form').reset();
+    let instance = M.Modal.getInstance(document.getElementById('change-modal'));
+    instance.open();
+    document.getElementById('modal-title').textContent = 'Actualizar contraseña';
+}
+
+document.getElementById('change-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+    
+    fetch(ACCOUNTAPI + 'changePassword', {
+        method: 'post',
+        body: new FormData(document.getElementById('change-form'))
+    }).then(function (request) {
+        if (request.ok) {
+            request.json().then(function (response) {
+                if (response.status) {
+                    let instance = M.Modal.getInstance(document.getElementById('change-modal'));
+                    instance.close();
+                    sweetAlert(1, response.message, null);
+                } else {
+                    sweetAlert(2, response.exception, null);
+                }
+            });
+        } else {
+            console.log(request.status + ' ' + request.statusText);
+        }
+    }).catch(function (error) {
+        console.log(error);
+    });
+});

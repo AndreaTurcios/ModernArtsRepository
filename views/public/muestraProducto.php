@@ -1,8 +1,9 @@
 <?php
     require_once('../../api/public/productos.php');
-    require_once('../../template/public/resourcesPage.php'); 
+    require_once('../../template/public/cestaPage.php'); 
     page::headerTemplate('muestraProducto');
 ?>
+
 
     <div class="container-fluid">
         <?php

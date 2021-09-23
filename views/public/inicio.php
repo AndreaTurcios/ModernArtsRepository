@@ -46,7 +46,7 @@
     </div>
 
     <?php
-        page::scriptTemplate('inicio');
+        page::scriptTemplatePrivate('inicio');
     ?> 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
