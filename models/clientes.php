@@ -295,8 +295,6 @@ class registro extends validation{
     }
 
 
-        
-
     public function createRow()
     {
         $fechahoy = date('Y-m-d');
@@ -307,6 +305,8 @@ class registro extends validation{
         $params = array($this->nombre, $this->apellido,$this->correo,$this->usuario, $hash,1);
         return Database::executeRow($sql, $params);
     }
+
+    //Punto 12, las consultas están parametrizadas, evitando inyecciones SQL
 
     public function createPELIGROSOXD($name,$lastName,$correo,$user,$clave){
         try{

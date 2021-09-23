@@ -2,7 +2,7 @@
 const ACCONUNTAPI = '../../api/acconuntApi.php?action=';
 
 
-//funcion para cerrar sesion en los formularios.
+//funcion para cerrar sesión en los formularios.
 
 function logOut(){
     swal({

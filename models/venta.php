@@ -168,5 +168,20 @@
                 }
         }
 
+        
+        public function crearComentario($usuario){
+            try{
+                $fecha = date("Y").'-'.date("m").'-'.date("d") ;
+                $sql = 'INSERT INTO venta(id_cliente,estado_venta,fecha_venta)
+                VALUES (?,?,?)';
+                $params = array($usuario,'carrito',$fecha);
+                return dataBase::executeRow($sql, $params);
+
+            } catch (Exception $error){
+
+                die("Error al obtener datos, carrito/Model: ".$error ->getMessage()); 
+            }
+    }
+
     }
 ?>

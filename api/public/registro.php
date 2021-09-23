@@ -55,7 +55,7 @@
                         }
                     break;
                 default:
-                $result['exception'] = 'No ha iniciado sesion, inicia session para poder comprar un producto';
+                $result['exception'] = 'No ha iniciado sesión, inicia sesión para poder comprar un producto';
             }
         }
         // Se indica el tipo de contenido a mostrar y su respectivo conjunto de caracteres.

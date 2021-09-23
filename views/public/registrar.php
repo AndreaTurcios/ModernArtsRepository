@@ -10,7 +10,8 @@
     <div class="todo box">
         <div class="formulario">
             <form id="send-form" method="post">
-                <h1>Iniciar sesion</h1>
+                <h1>Registro</h1>
+                <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response"/>
                 <input type="text" name="name" placeholder="Nombre" required>
                 <input type="text" name="apellido" placeholder="Apellido" required>
                 <input type="text" name="usuario" placeholder="Usuario" required>
@@ -25,6 +26,7 @@
             <div class="capa"></div>
         </div>
     </div>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LfpUGccAAAAAFHZ7KrEokJ9dUDy5bR_q_LFY7MU"></script>
     <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
     <script type="text/javascript" src="../../controllers/public/global.js"></script>
     <script type="text/javascript" src="../../controllers/public/registro.js"></script>

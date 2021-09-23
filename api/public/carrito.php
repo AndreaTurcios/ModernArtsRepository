@@ -35,7 +35,7 @@
                             }
                             else{
                                 if($dataVenta->createOrden($_SESSION['idUser'])){
-                                    if($idOrdenData1 = $dataVenta->ordenExist()){
+                                    if($idOrdenData1 = $dataVenta->ordenExist('user')){
                                         if($idOrden2 = $dataVenta->getId()){
                                             if($dataDetVenta->createDet($idOrden2,$_POST['precio'],$_POST['id'])){
                                                 $result['status'] = 1;
@@ -59,7 +59,7 @@
                             }
                         }
                         else{
-                            $result['exception'] = 'No ha iniciado sesion, inicia session para poder comprar un producto';
+                            $result['exception'] = 'No ha iniciado sesión, inicia session para poder comprar un producto';
                         }
                     }
                     else{
@@ -89,7 +89,7 @@
                         }
                     }
                     else{
-                        $result['exception'] = 'No ha iniciado sesion, inicia session para poder comprar un producto';
+                        $result['exception'] = 'No ha iniciado sesión, inicia session para poder comprar un producto';
                     }
                 break;
                 case 'addComentario':
@@ -105,7 +105,7 @@
                         }
                     }
                     else{
-                        $result['exception'] = 'No ha iniciado sesion, inicia session para poder comprar un producto';
+                        $result['exception'] = 'No ha iniciado sesión, inicia session para poder comprar un producto';
                     }
                 break;
                 default:
@@ -115,7 +115,7 @@
         else{
             switch($_GET['action']){
                 default:
-                $result['exception'] = 'No ha iniciado sesion, inicia session para poder comprar un producto';
+                $result['exception'] = 'No ha iniciado sesión, inicia session para poder comprar un producto';
             }
         }
         // Se indica el tipo de contenido a mostrar y su respectivo conjunto de caracteres.
