@@ -4,6 +4,7 @@
         //metodo imprime el header
         public static function headerTemplate($title){
             session_start();
+            $filename = basename($_SERVER['PHP_SELF']);
             print('
                 <!DOCTYPE html>
                         <head>

@@ -1,4 +1,3 @@
-
 <?php
 
 class dataBase
@@ -25,7 +24,6 @@ class dataBase
         } 
     }
 
-    //Método para ejecutar insert, update y delete.
     public static function executeRow($query, $values)
     {
         try {
@@ -33,12 +31,14 @@ class dataBase
             self::$statement = self::$connection->prepare($query);
             $state = self::$statement->execute($values);
             // Se anula la conexión con el servidor de base de datos.
-            self::$connection = null;
+            self::$connection = null;            
             return $state;
+            error_log('se conecta');
         } catch (PDOException $error) {
-            // Se obtiene el código y el mensaje de la excepción para establecer un error personalizado.
+            // Se obtiene el código y el mensaje de la excepción para establecer un error personalizado.           
             self::setException($error->getCode(), $error->getMessage());
             return false;
+            error_log('no se conecta');
         }
     }
 
@@ -124,6 +124,8 @@ class dataBase
     */
     private static function setException($code, $message)
     {
+        // Se asigna el mensaje del error original por si se necesita.
+        self::$error = utf8_encode($message);
         // Se compara el código del error para establecer un error personalizado.
         switch ($code) {
             case '7':
@@ -132,20 +134,20 @@ class dataBase
             case '42703':
                 self::$error = 'Nombre de campo desconocido';
                 break;
-            /*case '23505':
+            case '23505':
                 self::$error = 'Dato duplicado, no se puede guardar';
-                break;*/
+                break;
             case '42P01':
                 self::$error = 'Nombre de tabla desconocido';
                 break;
-            /*case '23503':
+            case '23503':
                 self::$error = 'Registro ocupado, no se puede eliminar';
-                break;*/
+                break;
             default:
-                //self::$error = 'Ocurrió un problema en la base de datos';
-                self::$error = $message;
+                self::$error = 'Ocurrió un problema en la base de datos';     
         }
     }
+
 
     /*
     *   Método para obtener un error personalizado cuando ocurre una excepción.
