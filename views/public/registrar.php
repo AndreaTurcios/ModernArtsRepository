@@ -26,6 +26,7 @@
             <div class="capa"></div>
         </div>
     </div>
+    <!-- Punto 13 reCaptcha -->
     <script src="https://www.google.com/recaptcha/api.js?render=6LfpUGccAAAAAFHZ7KrEokJ9dUDy5bR_q_LFY7MU"></script>
     <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
     <script type="text/javascript" src="../../controllers/public/global.js"></script>
