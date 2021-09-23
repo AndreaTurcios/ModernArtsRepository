@@ -127,6 +127,8 @@ class dataBase
         // Se asigna el mensaje del error original por si se necesita.
         self::$error = utf8_encode($message);
         // Se compara el código del error para establecer un error personalizado.
+
+        //Punto 15 excepciones personalizadas de la base de datos
         switch ($code) {
             case '7':
                 self::$error = 'Existe un problema al conectar con el servidor';
