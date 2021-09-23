@@ -210,13 +210,26 @@ class validation
     *   
     *   Retorno: booleano (true si el valor es correcto o false en caso contrario).
     */
-    public function validatePassword($value)
+    public function validatePassword1($value)
     {
         // Se verifica la longitud mínima de la contraseña.
         if (strlen($value) >= 6) {
             return true;
         } else {
             $this->passwordError = 'Clave menor a 6 caracteres';
+            return false;
+        }
+    }
+
+    // Punto 5 de la rúbrica, no permite menos de 8 carácteres entre alfanuméricos y especiales
+
+    public function validatePassword($value)
+    {
+        // Se verifica la longitud mínima de la contraseña.
+        if (preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%&]{8,75}$/',$value)) {
+            return true;           
+        } else {
+            $this->passwordError = 'Clave menor a 8 caracteres o No cumple con los requisitos de seguridad';
             return false;
         }
     }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>modernarts</title>
+    <title>ModernArts</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../../resources/css/public/registro.css">
 </head>
@@ -16,7 +16,7 @@
                 <input type="text" name="usuario" placeholder="Usuario" required>
                 <input type="text" name="gmail" placeholder="Gmail" required>
                 <input type="password" name="clave"  placeholder="Contraseña" id="pass1" onchange="passwordE();" required>
-                <input type="password" placeholder="Confirmar contraseña" id="pass2" onchange="passwordE();" required>
+                <input type="password"  name="confclave" placeholder="Confirmar contraseña" id="pass2" onchange="passwordE();" required>
                 <button id="regis">Registrarme</button>
                 <a href="../../?action=" class="boton">Ya tengo una cuenta</a>
             </form>

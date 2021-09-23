@@ -7,7 +7,7 @@
             print('
                 <!DOCTYPE html>
                         <head>
-                            <title>ModernArts - '.$title.'</title>
+                            <title>ModernArts '.$title.'</title>
                             <meta charset="utf-8">
                             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
                             <link type="text/css" rel="stylesheet" href="../../resources/css/materialize.min.css" media="screen,projection" />
@@ -78,7 +78,7 @@
                                 <h5 class="white-text">Creadores</h5>
                                 <p class="grey-text text-lighten-4">Este sitio fue creado por Juan Carlos Ardon Melara,
                                     Juan
-                                    Guillermo Almendares Tores estudiantes del Instituto Tecnico Ricaldone
+                                    Guillermo Almendares Tores estudiantes del Instituto Técnico Ricaldone
                                     de 3 año desarollo de software.
                                 </p>
                             </div>
@@ -130,6 +130,8 @@
         private static function modals()
         {
             // Se imprime el código HTML de las cajas de dialogo (modals).
+
+            //Este es el punto 3 de la rúbrica (cambiar contraseña)
             print('
                
                 <div id="password-modal" class="modal">
