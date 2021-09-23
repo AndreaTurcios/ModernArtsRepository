@@ -1,0 +1,24 @@
+body{
+    margin: 0;
+}
+
+
+.imgbgjc{
+    background-image: url(../material/imagenes/bgdark.jpg);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+.imgbgjc .himgjc{
+    text-align: center;
+    color:  #35353d;
+    position: relative;
+    top: 25%;
+    font-size: 90px;
+}
+
+.mrg{
+    margin-bottom: 10%;
+    text-align: center;
+}

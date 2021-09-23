@@ -1,0 +1,58 @@
+
+.contenidoCompra{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+}
+
+.imagenProducto{
+  height: 100%;
+  width: 40%;
+}
+
+.textoProducto{
+  height: 100%;
+  width: 60%;
+}
+
+.contenidoCompra img{
+  width: 100%;
+  padding-top: 25%;
+  padding-bottom: 25%;
+
+}
+
+.textoProducto{
+  padding-left: 30px;
+}
+
+@media screen and (max-width:600){
+  .imagenProducto{
+    width: 90%;
+  }
+  .textoProducto{
+    width: 90%;
+  }
+}
+
+@media screen and (max-width:800px){
+  .imagenProducto{
+    margin: auto;
+    width: 100%;
+    padding: 0px;
+  }
+
+  .textoProducto{
+    
+    width: 100%;
+  }
+
+  .textoProducto h1{
+    font-size: 250%;
+  }
+  .textoProducto p{
+    font-size: 100%;
+  }
+}
