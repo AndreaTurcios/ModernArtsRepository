@@ -13,7 +13,7 @@
             
             <div class="row">
                 <div class="col s6">
-                    <h3>reportes</h3>
+                    <h3>Reportes</h3>
                     <div class="col s12 m7">
                         <div class="card horizontal">
                         <div class="card-stacked">
@@ -70,6 +70,16 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row">   
+                        <div class="text-center col-12 col-xs-12 col-sm-12 col-lg-6 col-xl-6 p-4 col-xxl-6">
+                            <!-- Se muestra una gráfica de pastel con el porcentaje de productos por categoría -->
+                            <canvas id="ProductoCategoria"></canvas>
+                        </div>
+            </div>
+            <!-- Importación del archivo para generar gráficas en tiempo real. Para más información https://www.chartjs.org/ -->
+            <script type="text/javascript" src="../../resources/js/chart.js"></script>
+            <script type="text/javascript" src="../../controllers/graficos.js"></script>
             
             <div class="footer">
                 <?php

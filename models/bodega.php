@@ -239,5 +239,16 @@
                 die("Error al obtener datos, carrito/Model: ".$error ->getMessage()); 
             }
         }
+
+
+        public function productoCategoria()
+    {
+        $sql ='SELECT ca.categoria, COUNT(pr.nombre_producto) as cantidad
+        From producto pr 
+		INNER JOIN categoria ca USING(id_categoria)
+        Group by ca.categoria';
+        $params = null;
+        return Database::getRows($sql, $params);
+    }
     }
 ?>

@@ -45,23 +45,26 @@ class Report extends FPDF
     */
     public function Header()
     {
-        // Se establece el logo.
-        //$this->Image('../../../resources/img/logo.png', 15, 15, 20);
-        // Se ubica el título.
-        $this->Cell(20);
-        $this->SetFont('Arial', 'B', 15);
-        $this->Cell(166, 10, utf8_decode($this->title), 0, 1, 'C');
-        // Se ubica la fecha y hora del servidor.
-        $this->Cell(20);
-        $this->SetFont('Arial', '', 10);
-        $this->Cell(166, 10, 'Fecha/Hora: '.date('d-m-Y H:i:s'), 0, 1, 'C');
-        // Se setea el usuario de la sesión en el reporte.
-        $this->Cell(20);
-        $this->SetFont('Arial', '', 10);
-        //$this->Cell(166, 10, ('Usuario que genero el reporte: '. $_SESSION['usuario']), 0, 1, 'C');
-        // Se agrega un salto de línea para mostrar el contenido principal del documento.
-        $this->Ln(10);
-    }
+            // Se establece el logo.
+        if (isset($_SESSION['idUser'])) {
+            $this->Image('../../resources/img/logo.png', 15, 15, 25);
+            $this->Cell(20);
+            $this->SetFont('Arial', 'B', 15);
+            $this->Cell(166, 10, utf8_decode($this->title), 0, 1, 'C');
+            // Se ubica la fecha y hora del servidor.
+            $this->Cell(20);
+            $this->SetFont('Arial', '', 10);
+            $this->Cell(166, 10, 'Fecha/Hora: '.date('d-m-Y H:i:s'), 0, 1, 'C');
+            // Se setea el usuario de la sesión en el reporte.
+            $this->Cell(205, 10, 'Usuario: '.$_SESSION['user'], 0, 1, 'C');
+            $this->Cell(20);
+            $this->SetFont('Arial', '', 10);
+            //$this->Cell(166, 10, ('Usuario que genero el reporte: '. $_SESSION['usuario']), 0, 1, 'C');
+            // Se agrega un salto de línea para mostrar el contenido principal del documento.
+            $this->Ln(10);
+
+        }
+}
 
     /*
     *   Se sobrescribe el método de la librería para establecer la plantilla del pie de los reportes.
