@@ -59,7 +59,7 @@ function graficaProductoCategoria() {
                         });
                         // Se llama a la función que genera y muestra una gráfica de pastel en porcentajes. Se encuentra en el archivo components.js
                        // pieGraph('chart5',['inactivos','activos'], cantidad, 'Porcentaje de empleados por estado' );
-                       donutGraph('ClienteEstado',estado_cliente, cantidad, 'Clientes por estado', 'Clientes por estado' );
+                       donutGraph('ClienteEstado',estado_cliente, cantidad, 'Porcentaje de clientes por estado', 'Porcentaje de clientes por estado' );
                     } else {
                         document.getElementById('ClienteEstado').remove();
                         console.log(response.exception);
