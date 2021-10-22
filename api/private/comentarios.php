@@ -7,6 +7,7 @@
         session_start();
         $data = new VerProductos();
         $result = array('status' => 0, 'message' => null, 'exception' => null);
+        // Punto 18 de la rúbrica, se autentica que el usuario haya iniciado sesión para poder ingresar a la api
         if(isset($_SESSION['idUser'])){
             switch($_GET['action']){
                 case 'block':

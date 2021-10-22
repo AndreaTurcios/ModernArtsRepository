@@ -36,3 +36,31 @@ function logOut(){
         }
     });
 }
+
+//Métodos manejadores de eventos que se ejecutan cuando se realiza una acción
+document.addEventListener('click', sessionTime);
+
+document.addEventListener('DOMContentLoaded', sessionTime);
+
+function sessionTime() 
+{
+        fetch(ACCONUNTAPI + 'sessionTime', {
+            method: 'get'
+        }).then(function (request) {
+            // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje indicando el problema.
+            if (request.ok) {
+                request.json().then(function (response) {
+                    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+                    if (response.status) {
+                        sweetAlert(4, response.message, 'index.php');
+                    } else {
+                        console.log('Sesión activa')
+                    }
+                });
+            } else {
+                console.log(request.status + ' ' + request.statusText);
+            }
+        }).catch(function (error) {
+            console.log(error);
+        });
+}

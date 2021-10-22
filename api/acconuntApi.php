@@ -38,6 +38,7 @@
                     if ($dataUser->checkUser($_POST['user'])) {
                         if ($dataUser->checkPassword($_POST['password'],$_POST['user'])) {
                             $result['status'] = 1;
+                            $_SESSION['tiempo_usuario'] = time();
                             $result['message'] = 'Autenticación correcta';
                             $_SESSION['idUser'] = $dataUser->getId();
                             $_SESSION['user'] = $dataUser->getName();
@@ -74,6 +75,27 @@
                     }
                 }
                 break;
+                // Punto 19 de la rúbrica, se crea la variable session time para verificar el tiempo que lleva un usuario en línea
+                case 'sessionTime':
+                    if((time() - $_SESSION['tiempo_usuario']) < 300){
+                        $_SESSION['tiempo_usuario'] = time();
+                    } else{
+                       unset($_SESSION['idUser'], $_SESSION['user'], $_SESSION['tiempo_usuario']);
+                        $result['status'] = 1;
+                        $result['message'] = 'Se ha cerrado la sesión por inactividad'; 
+                    }
+                break;
+                case 'getDevices':
+                    if ($result['dataset'] = $usuario->getDevices()) {
+                        $result['status'] = 1;
+                    } else {
+                        if (Database::getException()) {
+                            $result['exception'] = Database::getException();
+                        } else {
+                            $result['exception'] = 'Usted no posee sesiónes registradas.';
+                        }   
+                    }
+                    break;
                 case 'changePassword':
                     if ($dataUser->setId($_SESSION['idUser'])) {
                         $_POST = $dataUser->validateForm($_POST);
