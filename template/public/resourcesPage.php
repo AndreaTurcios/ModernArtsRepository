@@ -112,6 +112,7 @@
                 <script type="text/javascript" src="../../resources/js/materialize.min.js"></script>
                 <script type="text/javascript" src="../../controllers/public/'.$controller.'.js"></script>
                 <script type="text/javascript" src="../../controllers/public/global.js"></script>
+                <script type="text/javascript" src="../../controllers/public/logout.js"></script>
                 <script type="text/javascript" src="../../template/components.js"></script>
                 </body>
                 </html>
@@ -124,6 +125,7 @@
                 <script type="text/javascript" src="../../resources/js/materialize.min.js"></script>
                 <script type="text/javascript" src="../../controllers/private/'.$controller.'.js"></script>
                 <script type="text/javascript" src="../../controllers/public/global.js"></script>
+                <script type="text/javascript" src="../../controllers/public/logout.js"></script>
                 <script type="text/javascript" src="../../template/components.js"></script>
                 </body>
                 </html>

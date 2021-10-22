@@ -48,7 +48,7 @@
                                             <input class="hide" type="number" name="id" id="id"/>
                                             <div class="input-field row">
                                                 <i class="material-icons prefix">account_circle</i>
-                                                <input id="name"  name= "name" type="text" class="validate" value="" placeholder="Nombre" required>
+                                                <input autocomplete="off" id="name"  name= "name" type="text" class="validate" value="" placeholder="Nombre" required>
                                             </div>
                                             <div class="input-field row">
                                                 <select class="browser-default" id="categoria" name="categoria">

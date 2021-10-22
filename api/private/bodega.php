@@ -10,6 +10,8 @@
         if(isset($_SESSION['idUser'])){
             switch($_GET['action']){
                 case 'create':
+                    // Prevenir Cross Site Scripting (XSS). 
+                    $_POST = $data->validateForm($_POST);
                     if($data->setName($_POST['name'])){
                         if($data->setDesc($_POST['desc'])){
                                 if($data->setidCategoria($_POST['categoria'])){
@@ -56,6 +58,8 @@
                     }
                 break;
                 case 'update':
+                    // Prevenir Cross Site Scripting (XSS). 
+                    $_POST = $data->validateForm($_POST);
                     if($data->setId($_POST['id'])){
                         if($data->setName($_POST['name'])){
                             if($data->setDesc($_POST['desc'])){
@@ -136,6 +140,8 @@
         else{
             switch($_GET['action']){
                 case 'create':
+                    // Prevenir Cross Site Scripting (XSS). 
+                    $_POST = $data->validateForm($_POST);
                     if($data->setName($_POST['name'])){
                         if($data->setDesc($_POST['desc'])){
                                 if($data->setidCategoria($_POST['categoria'])){
@@ -182,6 +188,8 @@
                     }
                 break;
                 case 'update':
+                    // Prevenir Cross Site Scripting (XSS). 
+                    $_POST = $data->validateForm($_POST);
                     if($data->setId($_POST['id'])){
                         if($data->setName($_POST['name'])){
                             if($data->setDesc($_POST['desc'])){
@@ -247,6 +255,8 @@
                     }
                 break;
                 case 'delete':
+                    // Prevenir Cross Site Scripting (XSS). 
+                    $_POST = $data->validateForm($_POST);
                     if($data->delete($_POST['id'])){
                         $result['status'] = 1;
                         $result['message'] = 'Usuario eliminado correctamente.';

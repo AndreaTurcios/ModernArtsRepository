@@ -94,6 +94,7 @@
                     <script type="text/javascript" src="../../controllers/private/'.$controller.'.js"></script>
                     <script type="text/javascript" src="../../controllers/private/app.js"></script>
                     <script type="text/javascript" src="../../template/components.js"></script>
+                    <script type="text/javascript" src="../../controllers/private/logout.js"></script>
                 </body>
                 </html>
             ');

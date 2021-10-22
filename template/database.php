@@ -12,7 +12,7 @@ class dataBase
     {
         // credenciales
         $server = 'localhost';
-        $database = 'ModernArts';
+        $database = 'modernArts';
         $username = 'postgres';
         $password = 'admin';
 
@@ -127,8 +127,6 @@ class dataBase
         // Se asigna el mensaje del error original por si se necesita.
         self::$error = utf8_encode($message);
         // Se compara el código del error para establecer un error personalizado.
-
-        //Punto 15 excepciones personalizadas de la base de datos
         switch ($code) {
             case '7':
                 self::$error = 'Existe un problema al conectar con el servidor';
@@ -137,7 +135,7 @@ class dataBase
                 self::$error = 'Nombre de campo desconocido';
                 break;
             case '23505':
-                self::$error = 'Dato duplicado, no se puede guardar';
+                self::$error = 'El registro ingresado esta en uso, no se puede guardar';
                 break;
             case '42P01':
                 self::$error = 'Nombre de tabla desconocido';
@@ -145,8 +143,18 @@ class dataBase
             case '23503':
                 self::$error = 'Registro ocupado, no se puede eliminar';
                 break;
+            case '42883':
+                self::$error = 'Existe un error de sintaxis';
+                break;
+            case '42702':
+                self::$error = 'Campos ambiguos en la consulta';
+                break;
+            case '08P01':
+                self::$error = 'No se envía el número de parámetros correcto';
+                break;
             default:
-                self::$error = 'Ocurrió un problema en la base de datos';     
+                //self::$error = 'Ocurrió un problema en la base de datos';
+                self::$error = $message;   
         }
     }
 

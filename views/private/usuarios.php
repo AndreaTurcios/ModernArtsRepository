@@ -77,15 +77,15 @@
                                             <input class="hide" type="number" name="id" id="id"/>
                                             <div class="input-field col s6">
                                                 <i class="material-icons prefix">account_circle</i>
-                                                <input id="name"  name= "name" type="text" class="validate" value="" placeholder="Nombre" required>
+                                                <input autocomplete="off" id="name"  name= "name" type="text" class="validate" value="" placeholder="Nombre" required>
                                             </div>
                                             <div class="input-field col s6">
                                                 <i class="material-icons prefix">account_circle</i>
-                                                <input id="lastname"  name= "lastname" type="text" class="validate" value="" placeholder="Apellido" required>
+                                                <input autocomplete="off" id="lastname"  name= "lastname" type="text" class="validate" value="" placeholder="Apellido" required>
                                             </div>
                                             <div class="input-field col s6">
                                                 <i class="material-icons prefix">email</i>
-                                                <input id="email" name= "email" type="email" class="validate" value="" placeholder="Email" required>
+                                                <input autocomplete="off" id="email" name= "email" type="email" class="validate" value="" placeholder="Email" required>
                                             </div>
                                         </div>
                                         <button class="btn waves-effect waves-light" type="submit" name="action">Submit

@@ -1,31 +1,116 @@
-<!-- Punto 10 bloqueo de vista de direcciones erróneas -->
-
 <!doctype html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8">
-    <title>¡No se encuentra el archivo!</title>
-    <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"/>
-	<link type="text/css" rel="stylesheet" href="../css/material_icons.css"/>
+    <title>¡Recurso no encontrado!</title>
+    <link type="text/css" rel="stylesheet" href="/GameBridgeStore/resources/css/materialize.min.css" />
+    <link type="text/css" rel="stylesheet" href="/GameBridgeStore/resources/css/material_icons.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
-<body>
-    <div class="container center-align">    
-      <div class="row"> 
-          <br>
-          <br>
-          <br>
-          <br>   
-         <div class="col s6 m6">             
-            <b>ModernArts</b>>
-         </div>
-         <div class="col s6 m5">
-            <h3>Error 404: Ruta inexistente</h3>  
-            <a href="../../../ModernArts/views/public/"><i class="medium material-icons">restore_page</i></a>
-         </div>
-      </div>
+<style>
+    
+
+    .error403 {
+
+        color: #FE8C01;
+        font-family: "Impact", fantasy, serif;
+        font-size: 100px;
+
+
+    }
+
+    .text {
+        color: #4B084C;
+        margin-bottom: 30px;
+        font-family: "Lucida Console", "Courier New", monospace;
+        font-size: 45px;
+
+    }
+
+
+    .button {
+        border-radius: 30px;
+        background-color: #FB4A61;
+        border: none;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 20px;
+        padding: 20px;
+        width: 340px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+    }
+
+    .button span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+    }
+
+
+    .button span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+    }
+
+    .button:hover span {
+        padding-right: 25px;
+    }
+
+    .button:hover span:after {
+        opacity: 1;
+        right: 0;
+    }
+
+    .button:active{
+
+       background-color:#A73140;
+
+    }
+
+    .imagen {
+
+        margin-top: 90px;
+        width: 100%;
+        height: auto;
+
+    }
+</style>
+
+<body class="colorbody">
+    <div class="container">
+
+        <div class="row">
+            <div class="col l6 m12 s12 xs12">
+
+                <img src="/GameBridgeStore/resources/img/interrrogar.png" alt="" class="imagen">
+            </div>
+
+            <div class="col l6 m12 s12 xs12 center-align">
+                <h1 class="text">¡Recurso no encontrado!</h1>
+                <h1 class="error403">ERROR 404</h1>
+                <h2 class="text">Lo sentimos, pero no se ha encontrado la dirección solicitada</h2>
+
+                <div class="form-field center-align">
+                    <a href="/ModernArtsRepository-master/index.php"><button class="button"><span>Volver al index</span>
+                        </button>
+                    </a>
+                </div>
+
+
+            </div>
+
+        </div>
     </div>
+
 </body>
+
 </html>
-
-

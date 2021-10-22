@@ -10,6 +10,8 @@
         if(isset($_SESSION['idUser'])){
             switch($_GET['action']){
                 case 'create':
+                    // Prevenir Cross Site Scripting (XSS). 
+                    $_POST = $userData->validateForm($_POST);
                     if($userData->setName($_POST['name'])){
                         if($userData->setLastName($_POST['lastname'])){
                             if($userData->setEmail($_POST['email'])){
@@ -34,6 +36,8 @@
                     }
                     break;
                 case 'update':
+                    // Prevenir Cross Site Scripting (XSS). 
+                    $_POST = $userData->validateForm($_POST);
                     if($userData->setName($_POST['name'])){
                         if($userData->setLastName($_POST['lastname'])){
                             if($userData->setEmail($_POST['email'])){

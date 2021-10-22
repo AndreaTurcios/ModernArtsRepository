@@ -2,8 +2,8 @@
 # | Custom error messages/pages                                        |
 # ----------------------------------------------------------------------
 
-ErrorDocument 403 /resources/error/403.html
-ErrorDocument 404 /resources/error/403.html
+ErrorDocument 403 /ModernArtsRepository-master/resources/error/403.html
+ErrorDocument 404 /ModernArtsRepository-master/resources/error/404.html
 
 # ----------------------------------------------------------------------
 # | Error prevention                                                   |

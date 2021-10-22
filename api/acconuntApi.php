@@ -23,6 +23,16 @@
         }
         else{
             switch($_GET['action']){
+
+                case 'logOut2':
+                    if (session_destroy()) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Sesión eliminada por inactividad';
+                    } else {
+                        $result['exception'] = 'Ocurrió un problema al cerrar la sesión';
+                    }
+                    break;
+
             case 'logIn':
                 if($_POST['tipo'] == 'app'){
                     if ($dataUser->checkUser($_POST['user'])) {
