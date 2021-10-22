@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     graficaCliente()
     graficacomentarioEstado()
     graficaVenta()
+    graficaStock()
 });
 
 function graficaProductoCategoria() {
@@ -162,7 +163,7 @@ function graficaStock() {
                     });
                     // Se llama a la función que genera y muestra una gráfica de pastel en porcentajes. Se encuentra en el archivo components.js
                    // pieGraph('chart5',['inactivos','activos'], cantidad, 'Porcentaje de empleados por estado' );
-                   barGraph('stockGraph',nombre_producto, cantidad, 'Top 3 de productos con mayor cantidad de stock', 'Top 3 de productos con mayor cantidad de stock' );
+                   lineGraph('stockGraph',nombre_producto, cantidad, 'Cantidad en stock', 'Top 3 de productos con mayor cantidad de stock' );
                 } else {
                     document.getElementById('stockGraph').remove();
                     console.log(response.exception);
