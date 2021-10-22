@@ -1,29 +1,36 @@
 <?php
-
-class dataBase
+/*
+*   Clase para realizar las operaciones en la base de datos.
+*/
+class Database
 {
-    // clases de coneccion para interaccion con el archivo
+    // Propiedades de la clase para manejar las acciones respectivas.
     private static $connection = null;
     private static $statement = null;
     private static $error = null;
 
-    //metodo de coneccion
+    /*
+    *   Método para establecer la conexión con el servidor de base de datos.
+    */  
     private static function connect()
     {
-        // credenciales
+        // Credenciales para establecer la conexión con la base de datos.
         $server = 'localhost';
-        $database = 'modernArts';
+        $database = 'ModernArts';   
         $username = 'postgres';
         $password = 'admin';
-
-        try{
-            self::$connection = new PDO('pgsql:host='.$server.';dbname='.$database.';port=5432', $username, $password);
-        }catch (Exception $error){
-            die("El error en la coneccion database: ".$error ->getMessage()); 
-            self::$connection = null;
-        } 
+   
+        // Se crea la conexión mediante la extensión PDO y el controlador para PostgreSQL.
+        self::$connection = new PDO('pgsql:  host='.$server.';dbname='.$database.';port=5432', $username, $password);
     }
 
+    /*
+    *   Método para ejecutar las siguientes sentencias SQL: insert, update y delete.
+    *
+    *   Parámetros: $query (sentencia SQL) y $values (arreglo de valores para la sentencia SQL).
+    *   
+    *   Retorno: booleano (true si la sentencia se ejecuta satisfactoriamente o false en caso contrario).
+    */
     public static function executeRow($query, $values)
     {
         try {
@@ -91,6 +98,7 @@ class dataBase
             return false;
         }
     }
+    
 
     /*
     *   Método para obtener todos los registros de una sentencia SQL tipo SELECT.
@@ -124,8 +132,6 @@ class dataBase
     */
     private static function setException($code, $message)
     {
-        // Se asigna el mensaje del error original por si se necesita.
-        self::$error = utf8_encode($message);
         // Se compara el código del error para establecer un error personalizado.
         switch ($code) {
             case '7':
@@ -135,7 +141,7 @@ class dataBase
                 self::$error = 'Nombre de campo desconocido';
                 break;
             case '23505':
-                self::$error = 'El registro ingresado esta en uso, no se puede guardar';
+                self::$error = 'Dato duplicado, no se puede guardar';
                 break;
             case '42P01':
                 self::$error = 'Nombre de tabla desconocido';
@@ -143,21 +149,12 @@ class dataBase
             case '23503':
                 self::$error = 'Registro ocupado, no se puede eliminar';
                 break;
-            case '42883':
-                self::$error = 'Existe un error de sintaxis';
-                break;
-            case '42702':
-                self::$error = 'Campos ambiguos en la consulta';
-                break;
-            case '08P01':
-                self::$error = 'No se envía el número de parámetros correcto';
-                break;
             default:
-                //self::$error = 'Ocurrió un problema en la base de datos';
-                self::$error = $message;   
+                self::$error = 'Ocurrió un problema en la base de datos';
+                self::$error = $message;    
         }
     }
-
+    
 
     /*
     *   Método para obtener un error personalizado cuando ocurre una excepción.

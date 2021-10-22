@@ -34,7 +34,7 @@
                     break;
 
             case 'logIn':
-                if($_POST['tipo'] == 'app'){
+                $_POST = $dataUser->validateForm($_POST);
                     if ($dataUser->checkUser($_POST['user'])) {
                         if ($dataUser->checkPassword($_POST['password'],$_POST['user'])) {
                             $result['status'] = 1;
@@ -49,14 +49,8 @@
                                 $result['exception'] = 'Clave incorrecta';
                             }
                         }
-                    } else {
-                        if (dataBase::getException()) {
-                            $result['exception'] = dataBase::getException();
-                        } else {
-                            $result['exception'] = ' Usuario no existe';
-                        }
-                    }
-                }
+                    } 
+
                 else if ($_POST['tipo'] == ''){
                     if ($dataUser->checkUserAlso($_POST['user'])) {
                         if ($dataUser->checkPasswordAlso($_POST['password'],$_POST['user'])) {

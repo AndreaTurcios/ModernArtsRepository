@@ -59,7 +59,7 @@
 
         public function checkUser($value){
             try{
-                $sql = 'SELECT nombre_admin,id_usuario_administracion FROM administradores WHERE correo_admin = ?';
+                $sql = 'SELECT nombre_admin,id_usuario_administracion, correo_admin FROM administradores WHERE correo_admin = ?';
                 $params = array($value);
                 if ($data = dataBase::getRow($sql, $params)) {
                     $this->id = $data['id_usuario_administracion'];
