@@ -110,7 +110,7 @@
              } else {
                  $this->intentosC = $data['intentos'];
                  $intentos = $this->intentosC + 1;
-                 $sql = 'UPDATE empleado SET intentos = ? where id_empleado = ?';
+                 $sql = 'UPDATE administradores SET intentos = ? where id_usuario_administracion = ?';
                  $params = array($intentos, $this->id);
                  return Database::executeRow($sql, $params);
              }
