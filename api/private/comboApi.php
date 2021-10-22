@@ -10,7 +10,6 @@
         // Punto 18 de la rúbrica, se autentica que el usuario haya iniciado sesión para poder ingresar a la api
         if(isset($_SESSION['idUser'])){
             class combo{ 
- 
              public static function comboCategoria(){
                 $bodega = new VerProductos;
                     if ($data = $bodega->comboCategorias()){
@@ -27,6 +26,8 @@
             }
         }
     }
-}
+    } else {
+        print(json_encode('Recurso no disponible'));
+    }
 }
 ?>

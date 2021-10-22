@@ -34,43 +34,61 @@
     }
 
     public static function menuTemplate(){
-
         if(isset($_SESSION['user'])){
             $button = '<li><a onClick="logOut()" ">Cerrar Sesión</a></li>';
             $btnmodal = '<li><a href="#" onclick="changePassword()"><i class="material-icons left">key</i>Cambiar contraseña</a></li>';
-        }
-        else{
+        }else{
             $button = '<li><a href="../../?action=">Iniciar Sesión</a></li>';
         }
         if(isset($_SESSION['admin'])){
             $app = '<li><a href="../private/inicio.php" ">App</a></li>';
-        }
-        else{
+        }else{
             $app = '';
         }
-        print('
-        <div class="nav-wrapper navbar-fixed">
-        <nav class="blue-grey darken-4">
-            <a href="#" class="brand-logo">ModernArts</a>
-            <a href="#" data-target="responsive-nav" class="sidenav-trigger">
-                <i class="material-icons">menu</i>
-            </a>
 
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="inicio.php">Inicio</a></li>
+        //punto 20, tipos de usuario
+        if($_SESSION['tipo_empleado']== 'root'){
+                print('
+                <div class="nav-wrapper navbar-fixed">
+                <nav class="blue-grey darken-4">
+                    <a href="#" class="brand-logo">ModernArts</a>
+                    <a href="#" data-target="responsive-nav" class="sidenav-trigger">
+                        <i class="material-icons">menu</i>
+                    </a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="inicio.php">Inicio</a></li>
+                        <li><a href="muestraProducto.php">Productos</a></li>
+                        '.$btnmodal.'
+                        '.$button.'
+                        '.$app.'
+                    </ul>
+                </nav>
+            </div>
+            <ul class="sidenav" id="responsive-nav">
+                <li><a href="../html/index.html">Inicio</a></li>
                 <li><a href="muestraProducto.php">Productos</a></li>
-                '.$btnmodal.'
-                '.$button.'
-                '.$app.'
-            </ul>
-        </nav>
-    </div>
-    <ul class="sidenav" id="responsive-nav">
-        <li><a href="../html/index.html">Inicio</a></li>
-        <li><a href="muestraProducto.php">Productos</a></li>
-    </ul>
-        ');
+            </ul>');
+        } else {
+            print('
+            <div class="nav-wrapper navbar-fixed">
+            <nav class="blue-grey darken-4">
+                <a href="#" class="brand-logo">ModernArts</a>
+                <a href="#" data-target="responsive-nav" class="sidenav-trigger">
+                    <i class="material-icons">menu</i>
+                </a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="inicio.php">Inicio</a></li>
+                    <li><a href="muestraProducto.php">Productos</a></li>
+                    '.$button.'
+                </ul>
+            </nav>
+        </div>
+        <ul class="sidenav" id="responsive-nav">
+            <li><a href="../html/index.html">Inicio</a></li>
+            <li><a href="muestraProducto.php">Productos</a></li>
+        </ul>');
     }
+}
         //metodo para imprimir el footer en las vistas, este metodo se ella por medio de un funcion estatica, no se solicita un valor para esta funcion
         public static function footerTemplate(){
             print('
@@ -138,7 +156,7 @@
 
             //Este es el punto 3 de la rúbrica (cambiar contraseña)
             print('
-               
+            <div id="changePassword" class="modal fade">
                 <div id="password-modal" class="modal">
                     <div class="modal-content">
                         <h4 class="center-align">Cambiar contraseña</h4>
@@ -165,6 +183,7 @@
                         </form>
                     </div>
                 </div>
+            </div>
             ');
     } 
 

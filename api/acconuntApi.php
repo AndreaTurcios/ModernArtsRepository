@@ -42,6 +42,7 @@
                             $result['message'] = 'Autenticación correcta';
                             $_SESSION['idUser'] = $dataUser->getId();
                             $_SESSION['user'] = $dataUser->getName();
+                            $_SESSION['tipo_empleado'] = $dataUser->getTipo_empleado();
                             $_SESSION['admin'] = true;
                         } else {
                             if (dataBase::getException()) {
@@ -85,8 +86,9 @@
                         $result['message'] = 'Se ha cerrado la sesión por inactividad'; 
                     }
                 break;
+                // Punto 17 de la rúbrica, 
                 case 'getDevices':
-                    if ($result['dataset'] = $usuario->getDevices()) {
+                    if ($result['dataset'] = $dataUser->getDevices()) {
                         $result['status'] = 1;
                     } else {
                         if (Database::getException()) {
@@ -96,6 +98,7 @@
                         }   
                     }
                     break;
+                //
                 case 'changePassword':
                     if ($dataUser->setId($_SESSION['idUser'])) {
                         $_POST = $dataUser->validateForm($_POST);

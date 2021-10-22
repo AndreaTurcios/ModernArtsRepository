@@ -52,7 +52,7 @@ function sessionTime()
                 request.json().then(function (response) {
                     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                     if (response.status) {
-                        sweetAlert(4, response.message, 'index.php');
+                        sweetAlert(4, response.message, 'inicio.php');
                     } else {
                         console.log('Sesión activa')
                     }

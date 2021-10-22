@@ -6,6 +6,7 @@
         private $password = null;
         private $name = null;
         private $lastname = null;
+        private $tipo_empleado = null;
 
         //metodos set
 
@@ -26,6 +27,16 @@
                 return false;
             }
         }
+
+        public function setTipoEmpleado($value){
+            if ($this->validateAlphabetic($value, 1, 50)) {
+                $this->tipo_empleado = $value;
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         public function setLastName($value){
             if ($this->validateAlphabetic($value, 1, 50)) {
                 $this->lastname = $value;
@@ -57,13 +68,18 @@
             return $this->name;
         }
 
+        public function getTipo_empleado(){
+            return $this->tipo_empleado;
+        }
+
         public function checkUser($value){
             try{
-                $sql = 'SELECT nombre_admin,id_usuario_administracion, correo_admin FROM administradores WHERE correo_admin = ?';
+                $sql = 'SELECT nombre_admin,id_usuario_administracion, correo_admin, tipo_usuario FROM administradores WHERE correo_admin = ?';
                 $params = array($value);
                 if ($data = dataBase::getRow($sql, $params)) {
                     $this->id = $data['id_usuario_administracion'];
                     $this->name = $data['nombre_admin'];
+                    $this->tipo_empleado = $data['tipo_usuario'];
                     $this->email = $value;
                     return true;
                 } else {
@@ -73,6 +89,36 @@
                 die("Error al veificar usuario, Login/Models: ".$error ->getMessage()); 
             }
         }
+
+        public function getDevices()
+    {
+        $sql = 'SELECT dispositivo, fecha FROM historial_sesion WHERE id_usuario_administracion = ?';
+        $params = array($_SESSION['idUser']);
+        return Database::getRows($sql, $params);
+    }
+
+    // punto 15, intentos fallidos de autenticación
+    public function agregarIntentos()
+     {   
+         $sql = 'SELECT intentos FROM administradores WHERE id_usuario_administracion = ?';
+         $params = array($this->id);
+         if($data = Database::getRow($sql, $params)){
+             if($data['intentos'] >=3 ){
+                 $sql = 'UPDATE administradores SET estado = false where id_usuario_administracion = ?';
+                 $params = array( $this->id);
+                 return Database::executeRow($sql, $params);
+             } else {
+                 $this->intentosC = $data['intentos'];
+                 $intentos = $this->intentosC + 1;
+                 $sql = 'UPDATE empleado SET intentos = ? where id_empleado = ?';
+                 $params = array($intentos, $this->id);
+                 return Database::executeRow($sql, $params);
+             }
+         } else {
+             return false;
+         }
+     }
+
 
         public function checkPassword($password , $email){
             try{
