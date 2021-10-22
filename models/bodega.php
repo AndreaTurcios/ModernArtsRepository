@@ -257,5 +257,16 @@
             $params = null;
             return Database::getRows($sql, $params);
             }
+
+
+            public function ventaGraph(){
+                $sql ='SELECT estado_venta, COUNT(id_venta) as cantidad
+                From venta 
+                GROUP BY estado_venta
+                ORDER BY cantidad desc
+                LIMIT 3';
+                $params = null;
+                return Database::getRows($sql, $params);
+            }
     }
 ?>
