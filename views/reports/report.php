@@ -56,7 +56,7 @@ class Report extends FPDF
             $this->SetFont('Arial', '', 10);
             $this->Cell(166, 10, 'Fecha/Hora: '.date('d-m-Y H:i:s'), 0, 1, 'C');
             // Se setea el usuario de la sesión en el reporte.
-            $this->Cell(205, 10, 'Usuario: '.$_SESSION['user'], 0, 1, 'C');
+            $this->Cell(205, 10, 'Usuario que imprime el reporte: '.$_SESSION['user'], 0, 1, 'C');
             $this->Cell(20);
             $this->SetFont('Arial', '', 10);
             //$this->Cell(166, 10, ('Usuario que genero el reporte: '. $_SESSION['usuario']), 0, 1, 'C');
