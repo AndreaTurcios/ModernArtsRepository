@@ -247,5 +247,16 @@
                 die("Error al reset datos, acconunt/Models: ".$error ->getMessage()); 
             }
         }
+
+        public function estadoClienteG()
+        {
+            $sql ='SELECT ec.estado_cliente, COUNT(cl.nombre_cliente) as cantidad
+            From clientes cl 
+            INNER JOIN estado_cliente ec USING(id_estado_cliente)
+            Group by ec.estado_cliente';
+            $params = null;
+            return Database::getRows($sql, $params);
+    
+        }
     }
 ?>

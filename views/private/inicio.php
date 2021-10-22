@@ -72,9 +72,14 @@
             </div>
 
             <div class="row">   
-                        <div class="text-center col-12 col-xs-12 col-sm-12 col-lg-6 col-xl-6 p-4 col-xxl-6">
+                        <div class="col s12 m7">
                             <!-- Se muestra una gráfica de pastel con el porcentaje de productos por categoría -->
                             <canvas id="ProductoCategoria"></canvas>
+                        </div>
+
+                        <div class="col s12 m7">
+                            <!-- Se muestra una gráfica de pastel con el porcentaje de productos por categoría -->
+                            <canvas id="ClienteEstado"></canvas>
                         </div>
             </div>
             <!-- Importación del archivo para generar gráficas en tiempo real. Para más información https://www.chartjs.org/ -->

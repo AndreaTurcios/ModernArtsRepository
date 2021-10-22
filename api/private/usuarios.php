@@ -33,6 +33,17 @@
                         $result['exception'] = 'Nombre del usuario incorrecto';
                     }
                     break;
+                    case 'GraficoCliente':
+                        if ($result['dataset'] = $userData->estadoClienteG()) {
+                             $result['status'] = 1;
+                        } else {
+                             if (Database::getException()) {
+                                   $result['exception'] = Database::getException();
+                             } else {
+                                   $result['exception'] = 'No hay datos registrados';
+                             }
+                        }						                    
+                    break;
                 case 'update':
                     if($userData->setName($_POST['name'])){
                         if($userData->setLastName($_POST['lastname'])){
