@@ -268,5 +268,15 @@
                 $params = null;
                 return Database::getRows($sql, $params);
             }
+
+            public function productosStock(){
+                $sql ='SELECT nombre_producto, sum(stock) as cantidad
+                From producto 
+                GROUP BY nombre_producto
+                ORDER BY cantidad desc
+                LIMIT 3';
+                $params = null;
+                return Database::getRows($sql, $params);
+            }
     }
 ?>

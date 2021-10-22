@@ -90,6 +90,17 @@
                          }
                     }						                    
                 break;
+                case 'graphStock':
+                    if ($result['dataset'] = $data->productosStock()) {
+                         $result['status'] = 1;
+                    } else {
+                         if (Database::getException()) {
+                               $result['exception'] = Database::getException();
+                         } else {
+                               $result['exception'] = 'No hay datos registrados';
+                         }
+                    }						                    
+                break;
                 case 'update':
                     // Prevenir Cross Site Scripting (XSS). 
                     $_POST = $data->validateForm($_POST);
