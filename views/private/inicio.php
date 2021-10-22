@@ -81,6 +81,11 @@
                             <!-- Se muestra una gráfica de pastel con el porcentaje de productos por categoría -->
                             <canvas id="ClienteEstado"></canvas>
                         </div>
+
+                        <div class="col s12 m7">
+                            <!-- Se muestra una gráfica de pastel con el porcentaje de productos por categoría -->
+                            <canvas id="ValoracionEstado"></canvas>
+                        </div>
             </div>
             <!-- Importación del archivo para generar gráficas en tiempo real. Para más información https://www.chartjs.org/ -->
             <script type="text/javascript" src="../../resources/js/chart.js"></script>

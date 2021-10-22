@@ -241,14 +241,21 @@
         }
 
 
-        public function productoCategoria()
-    {
+        public function productoCategoria(){
         $sql ='SELECT ca.categoria, COUNT(pr.nombre_producto) as cantidad
         From producto pr 
 		INNER JOIN categoria ca USING(id_categoria)
         Group by ca.categoria';
         $params = null;
         return Database::getRows($sql, $params);
-    }
+        }
+
+        public function comentarioEstado(){
+            $sql ='	SELECT estado, COUNT(id_valoraciones) as cantidad
+            From valoraciones
+            Group by estado';
+            $params = null;
+            return Database::getRows($sql, $params);
+            }
     }
 ?>
