@@ -89,7 +89,7 @@
                 die("Error al veificar usuario, Login/Models: ".$error ->getMessage()); 
             }
         }
-
+ // Punto 17 de la rúbrica
         public function getDevices()
     {
         $sql = 'SELECT dispositivo, fecha FROM historial_sesion WHERE id_usuario_administracion = ?';
@@ -228,14 +228,23 @@
             
         }
 
-        //Este es el punto 2 de la rúbrica (cifrar contraseña), crea un nuevo hash de contraseña usando 
-        //un algoritmo de hash fuerte de único sentido, el tiempo empleado en codificar una contraseña 
-        //se denomina coste y se puede configurar mediante el tercer argumento opcional de la función 
-        //password_hash(). El coste por defecto es 10 (por eso el prefijo de las contraseñas anteriores es $2y$10$).
-        //PASSWORD_BCRYPT, a pesar de su nombre, codifica la contraseña utilizando el algoritmo CRYPT_BLOWFISH. 
-        //Al igual que en el caso anterior, la contraseña codificada ocupa 60 caracteres en total, siendo los primeros caracteres $2y$.
+        //Este es el punto 2 de la rúbrica (cifrar contraseña), crea un nuevo hash de contraseña 
+        //usando 
+        //un algoritmo de hash fuerte de único sentido, el tiempo empleado en codificar una 
+        //contraseña 
+        //se denomina coste y se puede configurar mediante el tercer argumento opcional de la 
+        //función 
+        //password_hash(). El coste por defecto es 10 (por eso el prefijo de las contraseñas 
+        //anteriores es $2y$10$).
+        //PASSWORD_BCRYPT, a pesar de su nombre, codifica la contraseña utilizando el algoritmo 
+        //CRYPT_BLOWFISH. 
+        //Al igual que en el caso anterior, la contraseña codificada ocupa 60 caracteres en total, 
+        //siendo los primeros 
+        //caracteres 
+        //$2y$.
 
-        //Mientras que en el documento de OWASP hablaríamos de un deserialización insegura o configuración de seguridad incorrecta
+        //Mientras que en el documento de OWASP hablaríamos de un deserialización insegura o 
+        //configuración de seguridad incorrecta
 
         public function create(){
             $hash = password_hash('Arts', PASSWORD_DEFAULT);
@@ -303,6 +312,17 @@
             $params = null;
             return Database::getRows($sql, $params);
     
+        }
+
+        public function register()
+        {
+            $fechahoy = date('Y-m-d');
+            // Se encripta la clave por medio del algoritmo bcrypt que genera un string de 60 caracteres.
+            $hash = password_hash($this->password, PASSWORD_DEFAULT);
+            $sql = 'INSERT INTO administradores (nombre_admin,apellido_admin,correo_admin,clave_admin,estado)
+            VALUES (?,?,?,?,?)';
+            $params = array($this->name, $this->lastname,$this->email, $hash,true);
+            return Database::executeRow($sql, $params);
         }
     }
 ?>

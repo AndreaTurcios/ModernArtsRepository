@@ -132,7 +132,7 @@ class Database
     */
     private static function setException($code, $message)
     {
-        // Se compara el código del error para establecer un error personalizado.
+        // punto 14, excepciones de la base
         switch ($code) {
             case '7':
                 self::$error = 'Existe un problema al conectar con el servidor';

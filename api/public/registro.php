@@ -4,12 +4,14 @@
     require_once('../../template/database.php');
     require_once('../../template/validation.php');
     require_once('../../models/clientes.php');
+    require_once('../../models/acconunt.php');
     
     //-- CONSULTA DE DATOS DE API
     //=================================
     if( isset($_GET['action'])){
         session_start();
         $res = new registro();
+        $acconunt = new dataUser();
         $result = array('status' => 0, 'message' => null, 'exception' => null, 'login' => null);
         if(isset($_SESSION['user'])){
             switch($_GET['action']){ 
@@ -20,15 +22,14 @@
         else{
             switch($_GET['action']){
                 case 'add':
-                        $_POST = $res->validateForm($_POST);
-                        if ($res->setNombre($_POST['name'])) {
-                            if ($res->setApellido($_POST['apellido'],)) {
-                                        if ($res->setCorreo($_POST['gmail'])) {
-                                            if ($res->setUsuario($_POST['usuario'])) {
+                        $_POST = $acconunt->validateForm($_POST);
+                        if ($acconunt->setName($_POST['name'])) {
+                            if ($acconunt->setLastName($_POST['apellido'],)) {
+                                        if ($acconunt->setEmail($_POST['gmail'])) {
                                                 //Este es el punto 6 de la rúbrica, aquí se confirma que ambas contraseñas coincidan
                                                 if ($_POST['clave'] == $_POST['confclave']) {
-                                                    if ($res->setClave($_POST['clave'])) {
-                                                        if ($res->createRow()) {
+                                                    if ($acconunt->setPassword($_POST['clave'])) {
+                                                        if ($acconunt->register()) {
                                                             $result['status'] = 1;
                                                             $result['message'] = 'Usuario registrado correctamente';
                                                         } else {
@@ -41,9 +42,6 @@
                                         } else {
                                             $result['exception'] = 'Contraseñas no coinciden';
                                         }
-                                    } else {
-                                        $result['exception'] = 'Usuario incorrecto';
-                                    }
                                 } else {
                                     $result['exception'] = 'Correo incorrecto';
                                 }

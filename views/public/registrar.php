@@ -12,7 +12,8 @@
             <form id="send-form" method="post">
                 <h1>Registro</h1>
                 <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response"/>
-                <!-- Punto 8 para desactivar la función de autocomplete, según el documento de OWASP podría considerarse
+                <!-- Punto 8 para desactivar la función de autocomplete, según el documento de 
+                OWASP podría considerarse
                 configuración de seguridad incorrecta y exposición de datos sensibles -->
                 <input autocomplete="off" type="text" name="name" placeholder="Nombre" autocomplete="off" required/>
                 <input autocomplete="off" type="text" name="apellido" placeholder="Apellido" autocomplete="off" required/>

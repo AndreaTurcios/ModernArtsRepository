@@ -46,7 +46,11 @@
             $app = '';
         }
 
-        //punto 20, tipos de usuario
+        //punto 20, tipos de usuario, en este caso tenemos el usuario root, 
+        //se ha creado el campo tipo_empleado en la base de datos que verifica 
+        //si es root, en caso sea caso contrario, solo nos mostrará el botón de iniciar sesión, 
+        //productos e inicio
+        
         if($_SESSION['tipo_empleado']== 'root'){
                 print('
                 <div class="nav-wrapper navbar-fixed">

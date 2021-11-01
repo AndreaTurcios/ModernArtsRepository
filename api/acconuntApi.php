@@ -76,7 +76,8 @@
                     }
                 }
                 break;
-                // Punto 19 de la rúbrica, se crea la variable session time para verificar el tiempo que lleva un usuario en línea
+                // Punto 19 de la rúbrica, se crea la variable session time para 
+                //verificar el tiempo que lleva un usuario en línea
                 case 'sessionTime':
                     if((time() - $_SESSION['tiempo_usuario']) < 300){
                         $_SESSION['tiempo_usuario'] = time();
@@ -86,7 +87,7 @@
                         $result['message'] = 'Se ha cerrado la sesión por inactividad'; 
                     }
                 break;
-                // Punto 17 de la rúbrica, 
+                // Punto 17 de la rúbrica
                 case 'getDevices':
                     if ($result['dataset'] = $dataUser->getDevices()) {
                         $result['status'] = 1;

@@ -308,7 +308,7 @@ class registro extends validation{
 
     //Punto 12, las consultas están parametrizadas, evitando inyecciones SQL
 
-    public function createPELIGROSOXD($name,$lastName,$correo,$user,$clave){
+    public function createCliente($name,$lastName,$correo,$user,$clave){
         try{
             $sql = 'INSERT INTO clientes(nombre_cliente,apellidos_cliente,correo_cliente,usuario_cliente,clave,id_estado_cliente)
             VALUES (?,?,?,?,?,?)';
@@ -320,6 +320,8 @@ class registro extends validation{
             die("Error al update datos, acconunt/Models: ".$error ->getMessage()); 
         }
     }
+
+    
 
 }
 

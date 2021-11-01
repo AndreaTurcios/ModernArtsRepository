@@ -50,7 +50,9 @@ class validation
         return $fields;
     }*/
 
-    // Punto 11 strip_tags que valida todos los datos de entrada evitando que los usuarios ingresen cadenas de texto maliciosas
+    // Punto 11 strip_tags que valida todos los datos de entrada evitando que los 
+    //usuarios ingresen cadenas de texto maliciosas
+    
     public function validateForm($fields)
     {
         foreach ($fields as $index => $value) {
